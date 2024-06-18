@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+#svelte {
+	background-image: linear-gradient(to top, #f0f2f5, #ebedf0);
+	height: 100vh;
+}
