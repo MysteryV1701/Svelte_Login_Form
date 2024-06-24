@@ -1,18 +1,13 @@
 <script lang="ts">
 	import './app.css';
 	import NavBar from '$lib/components/NavBar/NavBar.svelte';
+	import Toast from '$lib/components/shared/toast/Toast.svelte';
 	import type { LayoutServerData } from './$types';
 	export let data: LayoutServerData;
-	import { loginSession, toast } from '../lib/stores/index';
-	const { user } = data;
-	$loginSession = user;
 </script>
 
-<NavBar loginSession={$loginSession}></NavBar>
-
-<main class="w-full">
+<Toast />
+<div class="min-h-[100vh]">
+	<NavBar loginSession={data.user} />
 	<slot />
-</main>
-
-<style lang="postcss">
-</style>
+</div>

@@ -1,11 +1,15 @@
 <script lang="ts">
-	export let type: 'submit' | 'button' | 'reset' = 'button';
+	import type { HTMLButtonAttributes } from 'svelte/elements';
+	type Kind = 'outline' | ' transparent' | 'solid';
+
+	export let type: HTMLButtonAttributes['type'] = 'button';
 	export let variant: 'filled' | 'ghost' | 'outline' = 'filled';
 	export let disable: boolean = false;
 	export let loading: boolean = false;
 	export let id: string | null = null;
 	export let title: string | null | undefined;
 	export let classStyled: string = '';
+	export let formAction: string | undefined = undefined;
 	export let size: 'sm' | 'md' | 'lg' = 'sm';
 	let className = `text-gray-900 text-center relative font-semibold whitespace-nowrap align-middle 
         outline-none inline-flex items-center justify-center select-none overflow-hidden gap-x-2  ${classStyled} `;
@@ -28,6 +32,7 @@
 	disabled={disable || loading}
 	class={className}
 	{title}
+	formaction={formAction}
 	on:click
 	on:focus
 	on:blur

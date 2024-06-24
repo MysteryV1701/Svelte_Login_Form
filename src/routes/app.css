@@ -8,5 +8,7 @@
 }
 #svelte {
 	background-image: linear-gradient(to top, #f0f2f5, #ebedf0);
-	height: 100vh;
+}
+.flow > * + * {
+	margin-top: var(--s-md, 1em);
 }

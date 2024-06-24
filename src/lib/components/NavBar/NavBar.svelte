@@ -1,9 +1,8 @@
 <script lang="ts">
-	import Button from '../shared/button/Button.svelte';
 	import Links from '../shared/links/Link.svelte';
 	import type { UserInterface } from '$lib/interface';
-	import { goto } from '$app/navigation';
-	export let loginSession: UserInterface;
+	import { enhance } from '$app/forms';
+	export let loginSession: UserInterface | null = null;
 
 	let isDropdownOpen: boolean = false;
 	const handleDropdownClick = () => {
@@ -19,17 +18,6 @@
 		if (relatedTarget instanceof HTMLElement && currentTarget.contains(relatedTarget)) return;
 		isDropdownOpen = false;
 	};
-
-	async function logout() {
-		const url = 'auth/logout';
-		const res = await fetch(url, {
-			method: 'POST'
-		});
-		console.log(res);
-		if (res.ok) {
-			goto('/');
-		} else console.error('Logout not successful');
-	}
 </script>
 
 <nav class="w-full py-6 bg-transparent grid" aria-label="Main Navigation">
@@ -76,14 +64,9 @@
 							<li><Links href="/" typeText>Profile</Links></li>
 						{/if}
 						<li>
-							<Button
-								type={'button'}
-								loading={false}
-								disable={false}
-								title={'Profile Button'}
-								on:click={logout}
-								classStyled={'text-center text-white'}>Đăng xuất</Button
-							>
+							<form action="/login?/logout" method="POST" use:enhance>
+								<button type="submit" class="" role="menuitem">Sign out</button>
+							</form>
 						</li>
 					</ul>
 				</div>

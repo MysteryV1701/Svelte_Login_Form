@@ -1,9 +1,8 @@
-import type { Role } from './role';
-
 export type UserInterface =
 	| {
-			id: number;
+			id: string;
 			email: string | null;
+			email_verified: boolean;
 			password: string | null;
 			name: string | null;
 			phone?: string;

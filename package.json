@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "npx prisma db push && npx prisma generate && vite build",
 		"preview": "vite preview",
 		"test": "npm run test:integration && npm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -17,9 +17,9 @@
 		"postinstall": "prisma generate"
 	},
 	"devDependencies": {
+		"@melt-ui/svelte": "^0.81.0",
 		"@playwright/test": "^1.28.1",
-		"@sveltejs/adapter-auto": "^3.0.0",
-		"@sveltejs/adapter-node": "^5.1.1",
+		"@sveltejs/adapter-node": "^5.2.0",
 		"@sveltejs/adapter-vercel": "^5.3.2",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
@@ -36,6 +36,7 @@
 		"postcss": "^8.4.38",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
+		"prisma": "^5.15.0",
 		"svelte": "^4.2.7",
 		"svelte-check": "^3.6.0",
 		"svelte-form-helper": "^0.4.1",
@@ -51,9 +52,14 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@auth/core": "^0.32.0",
-		"@auth/sveltekit": "^1.2.0",
+		"@lucia-auth/adapter-prisma": "^3.0.2",
+		"@lucia-auth/oauth": "^3.3.1",
 		"@prisma/client": "^5.15.0",
-		"dotenv": "^16.4.5"
+		"@vercel/blob": "^0.23.3",
+		"dotenv": "^16.4.5",
+		"lucia": "^2.7.2",
+		"lucide-svelte": "^0.395.0",
+		"resend": "^2.0.0",
+		"zod": "^3.22.4"
 	}
 }
