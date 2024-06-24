@@ -1,15 +1,15 @@
 import { dev } from '$app/environment';
-import {
-	GOOGLE_OAUTH_CLIENT_ID,
-	GOOGLE_OAUTH_CLIENT_SECRET,
-	GOOGLE_OAUTH_REDIRECT_URI
-} from '$env/static/private';
 import { prisma } from '@lucia-auth/adapter-prisma';
 import { lucia } from 'lucia';
 import { sveltekit } from 'lucia/middleware';
 
 import { db } from '../server/db';
 import { google } from '@lucia-auth/oauth/providers';
+import {
+	GOOGLE_OAUTH_CLIENT_ID,
+	GOOGLE_OAUTH_CLIENT_SECRET,
+	GOOGLE_OAUTH_REDIRECT_URI
+} from '$env/static/private';
 export const auth = lucia({
 	env: dev ? 'DEV' : 'PROD',
 	middleware: sveltekit(),
